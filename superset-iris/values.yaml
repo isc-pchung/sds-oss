@@ -1,4 +1,5 @@
-image:
-  repository: containers.intersystems.com/iscinternal/sds-service/superset-iris
-  tag: latest
-  pullPolicy: IfNotPresent
+superset:
+  image:
+    repository: containers.intersystems.com/iscinternal/sds-service/superset-iris
+    tag: latest
+    pullPolicy: IfNotPresent
