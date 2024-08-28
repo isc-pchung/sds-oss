@@ -15,7 +15,7 @@
 # limitations under the License.
 #
 apiVersion: v2
-appVersion: "0.10.5"
+appVersion: "0.10.6"
 description: Superset-Iris is a modern, enterprise-ready business intelligence web application
 name: superset-iris
 icon: https://isc-pchung.github.io/sds-oss/oss-superset-iris/icon.png
@@ -26,7 +26,7 @@ keywords:
 
 type: application
 
-version: 0.10.5
+version: 0.10.6
 
 annotations:
   intersystems/sds-title: Superset for IRIS
