@@ -37,6 +37,6 @@ icon: https://isc-pchung.github.io/sds-oss/oss-superset-iris/icon.png
 
 dependencies:
   - name: superset
-    version: 0.10.5
+    version: 0.10.6
     repository: https://apache.github.io/superset
     
