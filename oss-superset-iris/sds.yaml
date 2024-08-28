@@ -1,0 +1,47 @@
+apiVersion: v1
+# endpointDependencies:
+#  - dependency: jdbc
+#    endpointType: intersystems-iris-jdbc
+#    reason: Select the endpoint for FS Data Lake/IRIS instance
+#    chartField: fsIrisJDBCURL
+#    optional: true
+secrets:
+  - field: requiredSecrets.intersystemsContainerRegistrySecret
+    type: image-pull-secret
+    subType: irepo.intersystems.com
+    reason: These are the credentials to authenticate with irepo.intersystems.com
+externalServicesDeclarations:
+  - name: ingress
+    type: ingress
+    hostnameChartField: ingress.hostname
+    ingressBasePath: /
+    enabled: false
+    enabledChartField: ingress.enabled
+    tlsEnabledChartField: ingress.tlsEnabled
+    clusterIssuerChartField: ingress.tls.clusterIssuer
+    label: Access Superset UI over Ingress
+    description: Access the application UI over an Ingress
+endpoints:
+  - title: Visualization portal
+    group: Developer
+    description: Open data-viz management portal
+    type: browsing
+    url: http://{externalService.host}
+    contexts:
+      - manage
+    visibility: external
+    presentation: link
+    externalService: ingress
+compute:
+  computeSpecs:
+  - name: database
+    label: Database Node Specification
+    categoryFilter: CO,MO,GP
+    minCPU: 2
+    suggestedCPU: 4
+    minRAM: 4
+    suggestedRAM: 8
+    nodeSelectorField: compute.database.nodeTypeSelector
+    cpuRequestField: compute.database.cpu
+    memoryRequestField: compute.database.memory
+    help: Specifies how many cores and how much memory your database server nodes will have

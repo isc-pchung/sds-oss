@@ -1,17 +1,21 @@
 apiVersion: v1
 entries:
   superset-iris:
-  - apiVersion: v2
+  - annotations:
+      intersystems/sds-category: demo
+      intersystems/sds-organization: InterSystems Corporation
+      intersystems/sds-title: Superset for IRIS
+    apiVersion: v2
     appVersion: 0.10.5
-    created: "2023-08-28T17:46:12.267505-04:00"
+    created: "2024-08-28T10:16:52.630123-04:00"
     dependencies:
     - name: superset
       repository: https://apache.github.io/superset
       version: 0.10.5
     description: Superset-Iris is a modern, enterprise-ready business intelligence
       web application
-    digest: e80065743f3540c183cf8be677d51319a4f7966822e990814adc680681fceaf3
-    icon: https://isc-pchung.github.io/sds-oss/superset-iris/
+    digest: 8aec1e22b8381bb257a4f08a6266bd31e9b4e456cd201b4857ad1507f1fb2412
+    icon: https://isc-pchung.github.io/sds-oss/oss-superset-iris/icon.png
     keywords:
     - business intelligence
     - data science
@@ -20,4 +24,4 @@ entries:
     urls:
     - https://isc-pchung.github.io/sds-oss/superset-iris-0.10.5.tgz
     version: 0.10.5
-generated: "2023-08-28T17:46:12.24935-04:00"
+generated: "2024-08-28T10:16:52.618273-04:00"

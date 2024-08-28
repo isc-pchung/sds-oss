@@ -1,0 +1,37 @@
+{{- if eq (toString .Values.ingress.enabled) "true" }}
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  namespace: {{ .Release.Name }}
+  name: ingress
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    {{- if ne .Values.ingress.tls.clusterIssuer "" }}
+    cert-manager.io/cluster-issuer: {{ .Values.ingress.tls.clusterIssuer }}
+    {{- end }}
+    alb.ingress.kubernetes.io/group.name: sds-cp
+spec:
+  rules:
+  {{- if ne .Values.ingress.hostname "" }}
+  - host: {{ .Values.ingress.hostname }}
+    http:
+  {{- else }}
+  - http:
+  {{- end }}
+      paths:      
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: superset
+            port:
+              number: 8088
+ 
+  {{- if and (eq (toString .Values.ingress.tlsEnabled) "true") (ne .Values.ingress.hostname "") }}
+  tls:
+  - hosts:
+    - {{ .Values.ingress.hostname }}
+    secretName: {{ .Release.Name }}-tls-cert
+  {{- end }}
+{{- end }}

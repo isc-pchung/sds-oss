@@ -1,0 +1,25 @@
+superset:
+  secret: intersystems-container-registry-secret
+  image:
+    repository: irepo.intersystems.com/iscinternal/sds-service/superset-iris
+    tag: 2.1.0
+    pullPolicy: IfNotPresent
+
+  imagePullSecrets: 
+  - name: intersystems-container-registry-secret
+  
+  service:
+    port: 8088
+
+  fullnameOverride: superset
+
+  configOverrides: {SESSION_COOKIE_SAMESITE: "None", SESSION_COOKIE_SECURE: "False", WTF_CSRF_TIME_LIMIT: "None"}
+  
+fsIrisJDBCURL:
+
+ingress:
+  enabled: false
+  hostname: ""
+  tlsEnabled: false
+  tls:
+    clusterIssuer: sds-selfsigned-cluster-issuer
